@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "chirilageorge24@yahoo.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "position": "Process Engineer",
+      "department": "Production",
+      "isActive": true,
+      "createdAt": "2024-01-15T00:00:00.000Z"
+    }
+  ]
+}

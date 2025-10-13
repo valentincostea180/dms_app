@@ -1,0 +1,479 @@
+[
+  {
+    "week_number": 1,
+    "ge": 0.79,
+    "produced_volume": 35.6,
+    "breakdowns": 0.98,
+    "operational_losses": 0.42,
+    "waste": 0.69,
+    "speed_loss": 0.07
+  },
+  {
+    "week_number": 2,
+    "ge": 0.61,
+    "produced_volume": 34.13,
+    "breakdowns": 0.92,
+    "operational_losses": 0,
+    "waste": 1.53,
+    "speed_loss": 2.41
+  },
+  {
+    "week_number": 3,
+    "ge": 0.39,
+    "produced_volume": 41.92,
+    "breakdowns": 15.08,
+    "operational_losses": 3.0,
+    "waste": 12.56,
+    "speed_loss": 0.32
+  },
+  {
+    "week_number": 4,
+    "ge": 0.74,
+    "produced_volume": 58.58,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 2.11,
+    "speed_loss": 1.01
+  },
+  {
+    "week_number": 5,
+    "ge": 0.62,
+    "produced_volume": 87.55,
+    "breakdowns": 14.5,
+    "operational_losses": 2.67,
+    "waste": 7.72,
+    "speed_loss": 0.23
+  },
+  {
+    "week_number": 6,
+    "ge": 0.72,
+    "produced_volume": 66.62,
+    "breakdowns": 1.0,
+    "operational_losses": 0.33,
+    "waste": 3.22,
+    "speed_loss": 0.14
+  },
+  {
+    "week_number": 7,
+    "ge": 0.71,
+    "produced_volume": 123.81,
+    "breakdowns": 4.92,
+    "operational_losses": 0,
+    "waste": 5.7,
+    "speed_loss": 0.55
+  },
+  {
+    "week_number": 8,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 9,
+    "ge": 0.65,
+    "produced_volume": 85.59,
+    "breakdowns": 10.42,
+    "operational_losses": 0,
+    "waste": 4.01,
+    "speed_loss": 0.36
+  },
+  {
+    "week_number": 10,
+    "ge": 0.64,
+    "produced_volume": 86.55,
+    "breakdowns": 8.17,
+    "operational_losses": 0,
+    "waste": 4.43,
+    "speed_loss": 1.13
+  },
+  {
+    "week_number": 11,
+    "ge": 0.67,
+    "produced_volume": 91.22,
+    "breakdowns": 12.58,
+    "operational_losses": 1.83,
+    "waste": 3.04,
+    "speed_loss": 0.53
+  },
+  {
+    "week_number": 12,
+    "ge": 0.71,
+    "produced_volume": 78.38,
+    "breakdowns": 3.42,
+    "operational_losses": 0.5,
+    "waste": 4.37,
+    "speed_loss": 0.88
+  },
+  {
+    "week_number": 13,
+    "ge": 0.71,
+    "produced_volume": 111.28,
+    "breakdowns": 5.42,
+    "operational_losses": 0,
+    "waste": 6.01,
+    "speed_loss": 0.67
+  },
+  {
+    "week_number": 14,
+    "ge": 0.71,
+    "produced_volume": 78.3,
+    "breakdowns": 7.08,
+    "operational_losses": 0,
+    "waste": 4.25,
+    "speed_loss": 0.28
+  },
+  {
+    "week_number": 15,
+    "ge": 0.66,
+    "produced_volume": 77.93,
+    "breakdowns": 7.67,
+    "operational_losses": 3.08,
+    "waste": 6.25,
+    "speed_loss": 1.09
+  },
+  {
+    "week_number": 16,
+    "ge": 0.7,
+    "produced_volume": 74.57,
+    "breakdowns": 4.0,
+    "operational_losses": 1.33,
+    "waste": 3.33,
+    "speed_loss": 0.37
+  },
+  {
+    "week_number": 17,
+    "ge": 0.64,
+    "produced_volume": 69.82,
+    "breakdowns": 10.58,
+    "operational_losses": 0.5,
+    "waste": 3.93,
+    "speed_loss": 0.35
+  },
+  {
+    "week_number": 18,
+    "ge": 0.56,
+    "produced_volume": 38.84,
+    "breakdowns": 2.17,
+    "operational_losses": 0.42,
+    "waste": 1.72,
+    "speed_loss": 1.85
+  },
+  {
+    "week_number": 19,
+    "ge": 0.59,
+    "produced_volume": 90.66,
+    "breakdowns": 21.42,
+    "operational_losses": 1.17,
+    "waste": 7.59,
+    "speed_loss": 0.36
+  },
+  {
+    "week_number": 20,
+    "ge": 0.73,
+    "produced_volume": 117.83,
+    "breakdowns": 3.67,
+    "operational_losses": 0.17,
+    "waste": 5.76,
+    "speed_loss": 0.28
+  },
+  {
+    "week_number": 21,
+    "ge": 0.72,
+    "produced_volume": 113.82,
+    "breakdowns": 15.18,
+    "operational_losses": 1.23,
+    "waste": 4.43,
+    "speed_loss": 0.66
+  },
+  {
+    "week_number": 22,
+    "ge": 0.67,
+    "produced_volume": 63.05,
+    "breakdowns": 9.5,
+    "operational_losses": 0.25,
+    "waste": 2.76,
+    "speed_loss": 0.27
+  },
+  {
+    "week_number": 23,
+    "ge": 0.76,
+    "produced_volume": 121.0,
+    "breakdowns": 6.67,
+    "operational_losses": 1.38,
+    "waste": 3.76,
+    "speed_loss": 0.98
+  },
+  {
+    "week_number": 24,
+    "ge": 0.7,
+    "produced_volume": 105.26,
+    "breakdowns": 1.25,
+    "operational_losses": 2.75,
+    "waste": 6.64,
+    "speed_loss": 0.47
+  },
+  {
+    "week_number": 25,
+    "ge": 0.75,
+    "produced_volume": 131.94,
+    "breakdowns": 6.22,
+    "operational_losses": 1.75,
+    "waste": 7.01,
+    "speed_loss": 1.15
+  },
+  {
+    "week_number": 26,
+    "ge": 0.72,
+    "produced_volume": 131.72,
+    "breakdowns": 11.5,
+    "operational_losses": 4.78,
+    "waste": 7.12,
+    "speed_loss": 0.48
+  },
+  {
+    "week_number": 27,
+    "ge": 0.73,
+    "produced_volume": 124.78,
+    "breakdowns": 8.0,
+    "operational_losses": 6.6,
+    "waste": 5.65,
+    "speed_loss": 0.38
+  },
+  {
+    "week_number": 28,
+    "ge": 0.71,
+    "produced_volume": 117.2,
+    "breakdowns": 15.78,
+    "operational_losses": 1.5,
+    "waste": 6.57,
+    "speed_loss": 0.26
+  },
+  {
+    "week_number": 29,
+    "ge": 0.61,
+    "produced_volume": 67.93,
+    "breakdowns": 10.48,
+    "operational_losses": 0,
+    "waste": 6.11,
+    "speed_loss": 0.6
+  },
+  {
+    "week_number": 30,
+    "ge": 0.71,
+    "produced_volume": 91.68,
+    "breakdowns": 8.17,
+    "operational_losses": 1.33,
+    "waste": 2.89,
+    "speed_loss": 0.33
+  },
+  {
+    "week_number": 31,
+    "ge": 0.83,
+    "produced_volume": 116.88,
+    "breakdowns": 5.9,
+    "operational_losses": 0.58,
+    "waste": 4.83,
+    "speed_loss": 0.32
+  },
+  {
+    "week_number": 32,
+    "ge": 0.68,
+    "produced_volume": 95.72,
+    "breakdowns": 17.32,
+    "operational_losses": 2.58,
+    "waste": 3.88,
+    "speed_loss": 0.4
+  },
+  {
+    "week_number": 33,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 34,
+    "ge": 0.69,
+    "produced_volume": 113.18,
+    "breakdowns": 18.07,
+    "operational_losses": 2.83,
+    "waste": 5.83,
+    "speed_loss": 0.51
+  },
+  {
+    "week_number": 35,
+    "ge": 0.7,
+    "produced_volume": 115.92,
+    "breakdowns": 19.33,
+    "operational_losses": 0,
+    "waste": 4.54,
+    "speed_loss": 0.77
+  },
+  {
+    "week_number": 36,
+    "ge": 0.62,
+    "produced_volume": 99.67,
+    "breakdowns": 24.63,
+    "operational_losses": 3.25,
+    "waste": 11.92,
+    "speed_loss": 1.69
+  },
+  {
+    "week_number": 37,
+    "ge": 0.79,
+    "produced_volume": 118.78,
+    "breakdowns": 9.98,
+    "operational_losses": 1.83,
+    "waste": 3.15,
+    "speed_loss": 0.25
+  },
+  {
+    "week_number": 38,
+    "ge": 0.68,
+    "produced_volume": 113.37,
+    "breakdowns": 8.07,
+    "operational_losses": 1.92,
+    "waste": 3.84,
+    "speed_loss": 0.57
+  },
+  {
+    "week_number": 39,
+    "ge": 0.78,
+    "produced_volume": 120.24,
+    "breakdowns": 6.73,
+    "operational_losses": 2.5,
+    "waste": 7.69,
+    "speed_loss": 0.26
+  },
+  {
+    "week_number": 40,
+    "ge": 0.8,
+    "produced_volume": 147.27,
+    "breakdowns": 8.25,
+    "operational_losses": 3.25,
+    "waste": 5.6,
+    "speed_loss": 0.77
+  },
+  {
+    "week_number": 41,
+    "ge": 0.64,
+    "produced_volume": 46.91,
+    "breakdowns": 0.5,
+    "operational_losses": 1.5,
+    "waste": 2.17,
+    "speed_loss": 0.06
+  },
+  {
+    "week_number": 42,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 43,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 44,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 45,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 46,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 47,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 48,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 49,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 50,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 51,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 52,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  },
+  {
+    "week_number": 53,
+    "ge": 0,
+    "produced_volume": 0,
+    "breakdowns": 0,
+    "operational_losses": 0,
+    "waste": 0,
+    "speed_loss": 0
+  }
+]
