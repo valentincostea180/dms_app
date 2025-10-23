@@ -6,16 +6,17 @@ import sqlite3
 import json
 from openpyxl.utils import column_index_from_string
 
-# Configure logging
+# configurare logs
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Constants
+# directii fisiere input
 EXCEL_FILE = "./public/uploads/excelMare.xlsx"
 PRODUCTION_FILE = "./public/uploads/productionPlan.xlsx"
 BOS_FILE = "./public/uploads/Formular BOS.xlsx"
 NM_FILE = "./public/uploads/Formular raportare eveniment la limita producerii unui accident sau situație periculoasă.xslx"
 DB_FILE = "./public/data/production_data.db"
 
+# directii fisiere output
 WEEKLY_OUTPUT = "./public/data/weekly_summary.json"
 NM_OUTPUT = "./public/data/NM.json"
 BOS_OUTPUT = "./public/data/BOS.json"
@@ -23,12 +24,11 @@ DMS_OUTPUT = "./public/data/dms_actions.json"
 TARGET_OUTPUT = "./public/data/target.json"
 NEWS_OUTPUT = "./public/data/news.json"
 
+# verificari existente fisiere
 if not os.path.exists(EXCEL_FILE):
     raise FileNotFoundError(f"Fișierul Excel nu a fost găsit: {EXCEL_FILE}")
-
 if not os.path.exists(PRODUCTION_FILE):
     raise FileNotFoundError(f"Fișierul Production Plan nu a fost găsit: {PRODUCTION_FILE}")
-
 if not os.path.exists(BOS_FILE):
     raise FileNotFoundError(f"Fișierul BOS nu a fost găsit: {BOS_FILE}")
 
@@ -40,6 +40,7 @@ def generate_dms_data():
             "actions": [],
         }
         
+        # Add sample or just let the back up roll
         dms_data["actions"] = sample_actions
         
         logging.info("Generated initial DMS actions data structure")
@@ -60,7 +61,7 @@ def last_day_month(actual_day):
     next_month = actual_day.replace(day=28) + timedelta(days=4)
     return (next_month - timedelta(days=next_month.day)).date()
 
-# --- Generic data extraction function for operational and minor stoppages ---
+# extragere date excel general, GE file
 def extract_data(sheet, header_row, first_data_row, col_start, col_end, comment_col):
     """Return a list of rows grouped by their date."""
     data_by_date = {}
@@ -91,11 +92,9 @@ def extract_data(sheet, header_row, first_data_row, col_start, col_end, comment_
 
     return data_by_date
 
-# extragere data windwos log viewer
+# extragere date log viewer, GE file
 def extract_section_manager_production():
-    """
-    Extract production data from the Data sheet - simple version
-    """
+    """Extract production data from the Data sheet - simple version"""
     try:
         wb = openpyxl.load_workbook(EXCEL_FILE, data_only=True)
         sheet_name = "Data"
@@ -140,7 +139,7 @@ def extract_section_manager_production():
         logging.error(f"Error extracting production data: {e}")
         raise
 
-# --- Function for GE data ---
+# extragere date ge, GE file
 def extract_inceput_data(sheet):
     data_by_date = {}
     target_row = 11
@@ -164,7 +163,7 @@ def extract_inceput_data(sheet):
                 })
     return data_by_date
 
-# --- Function to extract production plan data ---
+# extragere date plan productie, Production Plan file
 def extract_production_plan_data():
     """Extract production plan data from Excel file."""
     try:
@@ -225,7 +224,7 @@ def extract_production_plan_data():
         logging.error(f"Eroare la extragerea datelor din production plan: {e}")
         raise
 
-# --- Function to extract BOS data ---
+# extragere date bos, BOS file
 def extract_bos_data():
     """Extract BOS data from Excel file."""
     try:
@@ -239,8 +238,8 @@ def extract_bos_data():
         current_date = datetime.now().strftime("%Y%m%d")
        
         # Extract the values from specific cells
-        actiuni_nesigure = sheet["B17"].value or 0
-        actiuni_sigure = sheet["C17"].value or 0
+        actiuni_nesigure = sheet["B14"].value or 0
+        actiuni_sigure = sheet["C14"].value or 0
        
         return {
             "actiuni_sigure": int(actiuni_sigure) if actiuni_sigure else 0,
@@ -251,6 +250,7 @@ def extract_bos_data():
         logging.error(f"Eroare la extragerea datelor din BOS: {e}")
         raise
 
+# extragere date nm, NM file
 def extract_nm_data():
     """Extract NM data from Excel file."""
     try:
@@ -278,7 +278,7 @@ def extract_nm_data():
         logging.error(f"Eroare la extragerea datelor din NM: {e}")
         raise
 
-# --- Function to extract target data ---
+# extragere date target, GE file
 def extract_target_data():
     """Extract target data from Excel file."""
     try:
@@ -321,8 +321,9 @@ def extract_target_data():
         logging.error(f"Eroare la extragerea datelor din target: {e}")
         raise
 
+# extragere e prost spus, asta e un fallback pentru mesaje
 def extract_news_data():
-    """Extract target data from Excel file."""
+    """Create Fall Back Messages"""
     try:
         return [{
             "message": "NU VA UITATI ANITIFOANELE",
@@ -345,6 +346,7 @@ def extract_news_data():
         logging.error(f"Eroare la extragere: {e}")
         raise
 
+# extragere date weekly, GE file
 def extract_weekly_data():
     """Extract weekly summary data from Excel file."""
     try:
@@ -385,7 +387,7 @@ def extract_weekly_data():
         logging.error(f"Eroare la extragerea datelor săptămânale: {e}")
         raise
 
-# --- Extract all data from both Excel files ---
+# extragere date din ambele fileuri principale, GE & Production Plan files
 def extract_data_from_all_files():
     try:
         # Process excelMare.xlsx
@@ -399,11 +401,10 @@ def extract_data_from_all_files():
         minor_data = extract_data(wb_main["Minor stoppages"], 9, 11, 10, 46, 110)
         break_data = extract_data(wb_main["Breakdowns"], 9, 11, 10, 46, 110)
         inceput_data = extract_inceput_data(wb_main["Daily_CALC"])
+        section_manager_data = extract_section_manager_production()
         
         # Process productionPlan.xlsx
         production_plan_data = extract_production_plan_data()
-
-        section_manager_data = extract_section_manager_production()
 
         # Combine all dates into a single dict
         all_dates = {}
@@ -429,7 +430,13 @@ def extract_data_from_all_files():
         logging.error(f"Eroare la extragerea datelor: {e}")
         raise
 
-# --- JSON functions ---
+# verificare empty file
+def is_file_empty_or_blank(filename):
+    if not os.path.exists(filename):
+        return True
+    return os.path.getsize(filename) == 0
+
+# functiile de salvare json
 def save_to_json(data, filename):
     try:
         with open(filename, 'w', encoding='utf-8') as f:
@@ -439,12 +446,43 @@ def save_to_json(data, filename):
         logging.error(f"Eroare la salvarea datelor în JSON: {e}")
         raise
 
-def is_file_empty_or_blank(filename):
-    if not os.path.exists(filename):
-        return True
-    return os.path.getsize(filename) == 0
+def to_json(file_path, file_type):
+    """Save data to JSON file based on file type."""
+    if is_file_empty_or_blank(file_path):
+        if file_type == "NEWS":
+            formatted_data = extract_news_data()
+        elif file_type == "DMS":
+            formatted_data = generate_dms_data()
+        else:
+            logging.error(f"Tip de fișier necunoscut: {file_type}")
+            return
+            
+        logging.info(f"Salvez datele în fișier JSON: {file_path}")
+        save_to_json(formatted_data, file_path)
+        logging.info("Procesul s-a terminat cu succes!")
+        print(f"Fișier generat: {file_path}")
 
-# --- SQLite3 functions ---
+    elif (is_file_empty_or_blank(file_path) == False):
+        if file_type == "BOS":
+            formatted_data = extract_bos_data()
+        elif file_type == "TARGET":
+            formatted_data = extract_target_data()
+        elif file_type == "WEEKLY":
+            formatted_data = extract_weekly_data()
+        elif file_type == "NM":
+            formatted_data = extract_nm_data()
+        else:
+            logging.error(f"Tip de fișier necunoscut: {file_type}")
+            return
+            
+        logging.info(f"Salvez datele în fișier JSON: {file_path}")
+        save_to_json(formatted_data, file_path)
+        logging.info("Procesul s-a terminat cu succes!")
+        print(f"Fișier generat: {file_path}")
+    else:
+        print("Fișier existent.")
+
+# functiile de modificare sql
 def create_tables(conn):
     cur = conn.cursor()
     cur.execute("""
@@ -585,6 +623,7 @@ def create_tables(conn):
     """)
     conn.commit()
 
+# functia de stergere la rulare noua
 def insert_data(conn, data):
     cur = conn.cursor()
     for date_key, content in data.items():
@@ -742,42 +781,6 @@ def insert_data(conn, data):
         # Note: We don't delete rapoarte to preserve user-added reports
     
     conn.commit()
-
-def to_json(file_path, file_type):
-    """Save data to JSON file based on file type."""
-    if is_file_empty_or_blank(file_path):
-        if file_type == "NEWS":
-            formatted_data = extract_news_data()
-        elif file_type == "DMS":
-            formatted_data = generate_dms_data()
-        else:
-            logging.error(f"Tip de fișier necunoscut: {file_type}")
-            return
-            
-        logging.info(f"Salvez datele în fișier JSON: {file_path}")
-        save_to_json(formatted_data, file_path)
-        logging.info("Procesul s-a terminat cu succes!")
-        print(f"Fișier generat: {file_path}")
-
-    elif (is_file_empty_or_blank(file_path) == False):
-        if file_type == "BOS":
-            formatted_data = extract_bos_data()
-        elif file_type == "TARGET":
-            formatted_data = extract_target_data()
-        elif file_type == "WEEKLY":
-            formatted_data = extract_weekly_data()
-        elif file_type == "NM":
-            formatted_data = extract_nm_data()
-        else:
-            logging.error(f"Tip de fișier necunoscut: {file_type}")
-            return
-            
-        logging.info(f"Salvez datele în fișier JSON: {file_path}")
-        save_to_json(formatted_data, file_path)
-        logging.info("Procesul s-a terminat cu succes!")
-        print(f"Fișier generat: {file_path}")
-    else:
-        print("Fișier existent.")
 
 def to_sqlite3():
     formatted_data = extract_data_from_all_files()

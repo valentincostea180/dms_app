@@ -20,7 +20,7 @@ import jsPDF from "jspdf";
 let dateNow = new Date();
 
 // referinta server
-const path = "10.142.43.91";
+const path = "localhost";
 
 // grafica pentru line charts
 const propGrafica = (
@@ -1559,7 +1559,7 @@ function App() {
                     className="text-center"
                     style={{ color: "white", height: "3rem" }}
                   >
-                    Nu există date care să corespundă filtrelor selectate.
+                    There are no due actions.
                   </td>
                 </tr>
               )}
@@ -3639,11 +3639,11 @@ function App() {
       ) : selectedTime === "Quarter" && selectedQuarter && selectedGraph ? (
         <div className="mt-4">
           {loading ? (
-            <p>Se încarcă...</p>
+            <p>Loading...</p>
           ) : (
             <>
               <h1>
-                Date pentru {selectedGraph} - {selectedQuarter}
+                Data for {selectedGraph} - {selectedQuarter}
               </h1>
               {selectedGraph === "GE" && chartDataGE ? (
                 <>
@@ -3783,7 +3783,7 @@ function App() {
           ) : (
             <>
               {loading ? (
-                <p>Se încarcă...</p>
+                <p>Loading...</p>
               ) : chartDataGE ? (
                 <div
                   ref={printRef}
@@ -3840,7 +3840,7 @@ function App() {
           ) : (
             <>
               {loading ? (
-                <p>Se încarcă...</p>
+                <p>Loading...</p>
               ) : chartDataVolume ? (
                 <div
                   ref={printRef}
@@ -3894,7 +3894,7 @@ function App() {
           ) : (
             <>
               {loading ? (
-                <p>Se încarcă...</p>
+                <p>Loading...</p>
               ) : chartDataWaste ? (
                 <div
                   ref={printRef}
@@ -3957,7 +3957,7 @@ function App() {
               </p>
 
               {loading ? (
-                <p>Se încarcă...</p>
+                <p>Loading...</p>
               ) : chartDataSpeed ? (
                 <div
                   ref={printRef}
@@ -4164,12 +4164,12 @@ function App() {
               <div className="sus-line-lead">
                 <div>
                   {loading ? (
-                    <p>Se încarcă planul de producție...</p>
+                    <p>Loading...</p>
                   ) : productionPlanData.length > 0 ? (
                     renderProductionTable()
                   ) : (
                     <h2 className="eroare_productie">
-                      Nu există date pentru planul de producție.
+                      No available data for production planning.
                     </h2>
                   )}
                 </div>
@@ -4187,7 +4187,7 @@ function App() {
               {showMonthForm ? (
                 <MonthSelectionForm graphType="GE" />
               ) : loading ? (
-                <p>Se încarcă...</p>
+                <p>Loading...</p>
               ) : chartDataGE ? (
                 <>
                   <div
@@ -4589,13 +4589,13 @@ function App() {
       ) : selectedInitial === "DMS Action Table" ? (
         <div className="mt-4">
           <h2 style={{ margin: "3rem" }}>DMS Action Table</h2>
-          {loading ? <p>Se încarcă datele...</p> : renderDMSActionTable()}
+          {loading ? <p>Loading...</p> : renderDMSActionTable()}
         </div>
       ) : (
         <></>
       )}
 
-      {loading && <p>Se încarcă...</p>}
+      {loading && <p>Loading...</p>}
 
       {selectedDataset &&
         !loading &&
