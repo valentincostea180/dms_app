@@ -1361,7 +1361,7 @@ function App() {
 
       const data = await response.json();
 
-      // Refresh the DMS action data after successful addition
+      // refetch datele dupa adaugare
       await fetchDMSActionData(dmsFilter);
 
       console.log("DMS action added successfully:", data);
@@ -1369,7 +1369,7 @@ function App() {
     } catch (err) {
       console.error("Error adding DMS action:", err);
       setAlertVisiblity(true);
-      throw err; // Re-throw to handle in the popup
+      throw err;
     } finally {
       setLoading(false);
     }
@@ -1389,7 +1389,7 @@ function App() {
 
       const data = await response.json();
 
-      // Refresh the DMS action data after successful deletion
+      // refetch datele dupa modificari
       await fetchDMSActionData(dmsFilter);
 
       console.log("DMS action deleted successfully:", data);
@@ -1413,27 +1413,27 @@ function App() {
       "Status",
     ];
 
-    // Color coding function similar to Section Manager log viewer
+    // logica colorare rand
     const getRowColor = (status: string, dueDate: string) => {
       const today = new Date();
       const due = new Date(dueDate);
 
-      // Completed actions - GREEN
+      // verde - complete
       if (status === "completed") {
         return "green-row";
       }
 
-      // Overdue actions - RED (active status but past due date)
+      // rosu - intarzieri
       if (status === "active" && due < today) {
         return "red-row";
       }
 
-      // Active but not overdue actions - YELLOW
+      // galben - active
       if (status === "active" && due >= today) {
         return "yellow-row";
       }
 
-      // Default color
+      // default
       return "";
     };
 
@@ -1447,7 +1447,6 @@ function App() {
       if (confirmDelete) {
         try {
           await handleDeleteDMSAction(action.id);
-          // The data will be refreshed automatically via fetchDMSActionData in the delete function
         } catch (error) {
           console.error("Failed to delete action:", error);
           alert("Failed to delete action. Please try again.");
@@ -1455,7 +1454,7 @@ function App() {
       }
     };
 
-    // Update the handleUpdateDMS function to use the correct parameter name
+    // functia de modificare dms table
     const handleUpdateDMS = async (id: number, newStatus: string) => {
       setLoading(true);
       try {
@@ -1472,7 +1471,7 @@ function App() {
 
         const data = await response.json();
 
-        // Refresh the DMS action data after successful update
+        // refetch datele dupa modificari
         await fetchDMSActionData(dmsFilter);
 
         console.log("DMS action status updated successfully:", data);
@@ -1733,10 +1732,10 @@ function App() {
     return lines.join("\n");
   };
 
-  // Render section manager production table
+  // functie vizualizare plan productie
   const renderProductionLogTable = () => {
     if (logViewerData.length === 0) {
-      return <p>Nu există date de producție pentru data selectată.</p>;
+      return <p>No available data for the selected date.</p>;
     }
 
     const getRowColor = (
@@ -1815,7 +1814,7 @@ function App() {
       return "green-row";
     };
 
-    // Analyze which columns have all zero values
+    // functie verificare prea multe 0 uri
     const shouldShowColumn = (columnName) => {
       return logViewerData.some((card) => {
         const lines = card.text.split("\n");
@@ -1883,7 +1882,7 @@ function App() {
       });
     };
 
-    // Column visibility variables
+    // definirea variabilelor de vizualizare ale coloanelor de interes
     const showHolidays = shouldShowColumn("Holidays");
     const showNoDemand = shouldShowColumn("No Demand");
     const showForceMajeure = shouldShowColumn("Force Majeure");
@@ -1987,7 +1986,7 @@ function App() {
                 return line ? line.split(": ")[1] : "";
               };
 
-              // Get all values for color coding and display
+              // valori pentru functie colorare
               const ge = getLineValue("GE");
               const volume = getLineValue("Volum produs");
               const operationalLosses = getLineValue("Operational Losses");
@@ -2136,14 +2135,14 @@ function App() {
     fetchTargets();
   }, []);
 
-  // Add this useEffect to handle URL changes and browser navigation
+  // modificari browser
   useEffect(() => {
-    // Function to update state based on current URL
+    // functie de modificarfe stare dupa url
     const updateStateFromUrl = () => {
       const hash = window.location.hash.replace("#", "");
       setCurrentPath(hash);
 
-      // Reset all selections first
+      // reset de inceput
       setSelectedInitial(null);
       setSelectedPosition(null);
       setSelectedDataset(null);
@@ -2156,11 +2155,10 @@ function App() {
       setShowDateForm(false);
       setShowMonthForm(false);
 
-      // Set state based on URL
+      // modificare stare dupa url efectiv
       switch (hash) {
         case "home":
         case "":
-          // Home page - no selections needed
           break;
         case "Adaugă documente":
         case "DMS Action Table":
@@ -2178,9 +2176,7 @@ function App() {
         case "Specific Machine":
           setSelectedTime(hash);
           break;
-        // Add more cases as needed for deeper navigation
         default:
-          // Try to find if it matches any initial
           if (initials.includes(hash)) {
             setSelectedInitial(hash);
           } else if (positions.includes(hash)) {
@@ -2195,7 +2191,7 @@ function App() {
     // Initial state setup from URL
     updateStateFromUrl();
 
-    // Handle browser back/forward buttons
+    // functie de modificare inapoi/inainte browser
     const handlePopState = () => {
       updateStateFromUrl();
     };
