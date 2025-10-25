@@ -124,6 +124,7 @@ function App() {
 
   const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
   const [selectedDataset, setSelectedDataset] = useState<string | null>(null);
+  const [selectedRaport, setSelectedRaport] = useState<string | null>(null);
   const [selectedInitial, setSelectedInitial] = useState<string | null>(null);
   const [selectedGraph, setSelectedGraph] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
@@ -242,6 +243,7 @@ function App() {
             setShowDateForm(false);
             setShowMonthForm(false);
             setSelectedMonth(null);
+            setSelectedRaport(null);
           }}
           className="text-breadcrumb hover:text-[#2E4053]"
         >
@@ -2160,9 +2162,9 @@ function App() {
         case "home":
         case "":
           break;
-        case "Adaugă documente":
+        case "Drag & Drop":
         case "DMS Action Table":
-        case "Verifică statistica":
+        case "KPIs":
         case "Graphs":
           setSelectedInitial(hash);
           break;
@@ -2393,15 +2395,11 @@ function App() {
     "Decoration",
     "Washing machine",
   ];
-  const rapoarte = ["Vezi Rapoarte", "Adaugă Raport"];
+  const rapoarte = ["View Raports", "Add New Raport"];
   const loss = ["Operational Losses", "Minor Stoppages", "Breakdowns"];
   const times = ["Specific Machine", "Quarter", "Month"];
   const quarters = ["Q1", "Q2", "Q3", "Q4"];
   const graphs = ["GE", "Volume Produced", "Waste", "Speed Loss"];
-
-  //
-
-  //
 
   // ascunde scroll
   useEffect(() => {
@@ -2636,8 +2634,8 @@ function App() {
             [currentDate]: cards,
           });
         }
-      } else {
-        // ... rest of your existing handleSelectItem logic for other datasets
+      } else if (selectedDataset === "Stops") {
+        setSelectedRaport(item);
       }
     } catch (err) {
       console.error(err);
@@ -3223,11 +3221,13 @@ function App() {
     setChartDataWaste(null);
     setSelectedMonth(null);
     setShowBOSTable(false);
+    setSelectedRaport(null);
   };
 
   // logica de intoarcere la sectii
   const handleBackToDatasets = () => {
     setSelectedDataset(null);
+    setSelectedRaport(null);
     setCardsData([]);
   };
 
@@ -4300,7 +4300,7 @@ function App() {
             </>
           )}
         </div>
-      ) : selectedDataset === "addRaport" ? (
+      ) : selectedRaport === "Add New Raport" ? (
         <div className="mt-4">
           <h3>Formular Raport Nou</h3>
           <div className="row g-2">
@@ -4508,7 +4508,10 @@ function App() {
             </button>
             <button
               className="btn btn-group-vertical-item"
-              onClick={() => setSelectedDataset(null)}
+              onClick={() => {
+                setSelectedDataset(null);
+                setSelectedRaport(null);
+              }}
             >
               Back
             </button>
@@ -4561,7 +4564,7 @@ function App() {
           {!showDateForm && (
             <ButtonGroup
               items={items}
-              heading={`Seturi de date pentru ${selectedPosition}`}
+              heading={`Data sets for ${selectedPosition}`}
               onSelectItem={handleSelectItem}
             />
           )}
@@ -4593,14 +4596,16 @@ function App() {
 
       {loading && <p>Loading...</p>}
 
+      {selectedDataset === "Stops" &&
+        selectedRaport === "View Raports" &&
+        renderReportsTable()}
+
       {selectedDataset &&
         !loading &&
         (cardsData.length > 0 || comparisonDates.length > 0) && (
           <div className="mt-4">
-            {selectedDataset === "Vezi Rapoarte" ? (
-              renderReportsTable()
-            ) : selectedDataset === "GE & Stats" &&
-              selectedPosition === "Process Engineer" ? (
+            {selectedDataset === "GE & Stats" &&
+            selectedPosition === "Process Engineer" ? (
               // New comparison view for Process Engineer GE & Stats
               <>
                 {/* Display comparison data */}

@@ -204,7 +204,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
   margin: 2rem 0;
 }
 
@@ -255,9 +254,7 @@ body {
 }
 
 .btn-group-vertical {
-  padding: 0;
   border: none;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
