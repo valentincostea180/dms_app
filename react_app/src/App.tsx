@@ -4146,6 +4146,7 @@ function App() {
                       onClick={() => {
                         setShowDateForm(false);
                         setSelectedInitial(null);
+                        setSelectedPosition(null);
                       }}
                     >
                       Cancel
@@ -4585,6 +4586,8 @@ function App() {
             onSelectItem={handleSelectItem}
           />
         </>
+      ) : selectedRaport === "View Raports" ? (
+        renderReportsTable()
       ) : selectedInitial === "DMS Action Table" ? (
         <div className="mt-4">
           <h2 style={{ margin: "3rem" }}>DMS Action Table</h2>
@@ -4595,10 +4598,6 @@ function App() {
       )}
 
       {loading && <p>Loading...</p>}
-
-      {selectedDataset === "Stops" &&
-        selectedRaport === "View Raports" &&
-        renderReportsTable()}
 
       {selectedDataset &&
         !loading &&
