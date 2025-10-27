@@ -51,8 +51,8 @@ const propGrafica = (
         title: {
           display: true,
           text: isQuarterly
-            ? `Săptămânile trimestrului ${timePeriod}`
-            : `Zilele lunii ${timePeriod}`,
+            ? `Weeks of ${timePeriod}`
+            : `Days of ${timePeriod}`,
           color: "#ba8bd3",
         },
         ticks: {
@@ -244,6 +244,7 @@ function App() {
             setShowMonthForm(false);
             setSelectedMonth(null);
             setSelectedRaport(null);
+            window.history.pushState("", "");
           }}
           className="text-breadcrumb hover:text-[#2E4053]"
         >
@@ -275,7 +276,7 @@ function App() {
         </span>
       );
     }
-    if (selectedTime || selectedMonth) {
+    if ((selectedTime || selectedMonth) && selectedPosition !== "Line Lead") {
       breadcrumbItems.push(<> • </>);
       breadcrumbItems.push(
         <span
@@ -2233,12 +2234,12 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ date: Form(dateNow), raport: cleanRaport }),
       });
-      if (!res.ok) throw new Error("Eroare la salvarea raportului");
-      alert("Raport salvat cu succes!");
+      if (!res.ok) throw new Error("Error saving the raport.");
+      alert("Saved raport!");
       setSelectedDataset(null);
     } catch (err) {
       console.error(err);
-      alert("Nu s-a putut salva raportul.");
+      alert("The raport couldn't be saved.");
     }
   };
 
@@ -3222,6 +3223,7 @@ function App() {
     setSelectedMonth(null);
     setShowBOSTable(false);
     setSelectedRaport(null);
+    window.history.pushState("", "");
   };
 
   // logica de intoarcere la sectii
@@ -3528,7 +3530,7 @@ function App() {
         x: {
           title: {
             display: true,
-            text: `Zilele lunii ${displayPeriod}`,
+            text: `Days of ${displayPeriod}`,
             color: "#ba8bd3",
           },
           ticks: {
@@ -3582,7 +3584,7 @@ function App() {
 
       {alertVisible && (
         <Alert onClose={() => setAlertVisiblity(false)}>
-          Eroare la încărcarea datelor. Verifică fișierul JSON.
+          Error fetching data.
         </Alert>
       )}
       {!selectedInitial ? (

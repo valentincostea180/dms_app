@@ -127,15 +127,13 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
     <>
       {loading && (
         <div className="news-ticker-container">
-          <div className="news-ticker-message">Se încarcă știrile...</div>
+          <div className="news-ticker-message">Fetching news...</div>
         </div>
       )}
 
       {error && (
         <div className="news-ticker-container">
-          <div className="news-ticker-message error">
-            Eroare la încărcare: {error}
-          </div>
+          <div className="news-ticker-message error">Error: {error}</div>
         </div>
       )}
 
@@ -145,7 +143,7 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
             className="news-ticker-message"
             onClick={() => setShowComments(true)}
           >
-            Nu există știri momentan.
+            There are no available news.
           </div>
         </div>
       )}
@@ -165,7 +163,7 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
         <div className="comments-modal">
           <div className="comments-content">
             <div className="comments-header">
-              <h2 className="titlu-table-news">Știri</h2>
+              <h2 className="titlu-table-news">News</h2>
               <button
                 className="close-btn"
                 onClick={() => setShowComments(false)}
@@ -177,7 +175,7 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
             <div className="add-comment">
               <input
                 type="text"
-                placeholder="Adaugă o știre nouă..."
+                placeholder="Add news.."
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     addMessage(e.currentTarget.value);
@@ -201,13 +199,13 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
 
             <div className="comments-list">
               {messages.length === 0 ? (
-                <p>Nu există știri.</p>
+                <p>No available news.</p>
               ) : (
                 <table className="comments-table">
                   <thead>
                     <tr>
-                      <th>Știre</th>
-                      <th>Acțiuni</th>
+                      <th>News</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -219,7 +217,7 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
                             className="delete-btn"
                             onClick={() => deleteMessage(index)}
                           >
-                            Șterge
+                            Delete
                           </button>
                         </td>
                       </tr>
