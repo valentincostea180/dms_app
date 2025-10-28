@@ -309,7 +309,7 @@ function App() {
       );
     }
 
-    if (selectedGraph) {
+    if (selectedGraph && selectedQuarter) {
       breadcrumbItems.push(<> • </>);
       breadcrumbItems.push(
         <span
@@ -541,6 +541,7 @@ function App() {
     };
 
     const handleCancel = () => {
+      setAlertVisiblity(false);
       setShowAddActionPopup(false);
       // Reset form
       setNewAction({
@@ -4149,6 +4150,7 @@ function App() {
                         setShowDateForm(false);
                         setSelectedInitial(null);
                         setSelectedPosition(null);
+                        setAlertVisiblity(false);
                       }}
                     >
                       Cancel
@@ -4260,6 +4262,7 @@ function App() {
                     onClick={() => {
                       setShowLogDateForm(false);
                       setSelectedLogViewer(null);
+                      setAlertVisiblity(false);
                     }}
                   >
                     Cancel
@@ -4714,6 +4717,7 @@ function App() {
                               className="btn-inapoi-imp btn-secondary"
                               onClick={() => {
                                 setShowDateInput(false);
+                                setAlertVisiblity(false);
                               }}
                             >
                               Cancel
