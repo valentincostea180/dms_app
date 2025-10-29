@@ -3951,7 +3951,7 @@ function App() {
                   className="btn-inapoi-luna btn-primary"
                   onClick={() => setShowMonthForm(true)}
                 >
-                  Schimbă Luna
+                  Pick a different month
                 </button>
               </p>
 
@@ -4040,28 +4040,27 @@ function App() {
                 <p>Loading data for {selectedMachine}...</p>
               ) : chartDataMachine ? (
                 <>
-                  <h5>Loss Management</h5>
                   <h2 style={{ marginBottom: "1rem" }}>{selectedMachine}</h2>
 
                   {/* Summary Cards */}
                   {chartDataMachine && chartDataMachine.summary && (
-                    <div className="row mb-4">
+                    <div className="row">
                       <div className="col-md-4">
-                        <h5 className="card-title">Breakdowns</h5>
-                        <p className="card-text h4">
+                        <h6 className="card-title">Breakdowns</h6>
+                        <p className="card-text h7">
                           {chartDataMachine.summary.totalBreakdowns || 0} min
                         </p>
                       </div>
                       <div className="col-md-4">
-                        <h5 className="card-title">Minor Stoppages </h5>
-                        <p className="card-text h4">
+                        <h6 className="card-title">Minor Stoppages </h6>
+                        <p className="card-text h7">
                           {chartDataMachine.summary.totalMinorStoppages || 0}{" "}
                           min
                         </p>
                       </div>
                       <div className="col-md-4">
-                        <h5 className="card-title">Operational Losses </h5>
-                        <p className="card-text h4">
+                        <h6 className="card-title">Operational Losses </h6>
+                        <p className="card-text h7">
                           {chartDataMachine.summary.totalOperationalLosses || 0}{" "}
                           min
                         </p>
@@ -4069,11 +4068,10 @@ function App() {
                     </div>
                   )}
 
-                  {/* Chart */}
                   <div
                     ref={printRef}
                     className="dataCard graph"
-                    style={{ height: "500px" }}
+                    style={{ height: "400px" }}
                   >
                     <Bar
                       data={chartDataMachine}
