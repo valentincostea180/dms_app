@@ -244,7 +244,7 @@ function App() {
             setShowMonthForm(false);
             setSelectedMonth(null);
             setSelectedRaport(null);
-            window.history.pushState("", "");
+            window.history.pushState({}, "", "/");
           }}
           className="text-breadcrumb hover:text-[#2E4053]"
         >
@@ -2838,14 +2838,14 @@ function App() {
       <table className="table tb table-striped table-bordered">
         <thead>
           <tr>
-            <th>Ora Început</th>
-            <th>Ora Sfârșit</th>
-            <th>Zona</th>
-            <th>Tip</th>
-            <th>Motiv</th>
-            <th>Mașina</th>
-            <th>Ansamblu</th>
-            <th>Problema</th>
+            <th>Start Hour</th>
+            <th>End Hour</th>
+            <th>Zone</th>
+            <th>Type</th>
+            <th>Reason</th>
+            <th>Machine</th>
+            <th>Ansamlbe</th>
+            <th>Issue</th>
           </tr>
         </thead>
         <tbody>
@@ -2861,14 +2861,14 @@ function App() {
                 onClick={() => handleEliminate(index)}
                 style={{ cursor: "no-drop" }}
               >
-                <td>{getLineValue("Ora Inceput")}</td>
-                <td>{getLineValue("Ora Sfarsit")}</td>
-                <td>{getLineValue("Zona")}</td>
-                <td>{getLineValue("Tip")}</td>
-                <td>{getLineValue("Motiv")}</td>
-                <td>{getLineValue("Masina")}</td>
-                <td>{getLineValue("Ansamblu")}</td>
-                <td>{getLineValue("Problema")}</td>
+                <td>{getLineValue("Start Hour")}</td>
+                <td>{getLineValue("End Hour")}</td>
+                <td>{getLineValue("Zone")}</td>
+                <td>{getLineValue("Type")}</td>
+                <td>{getLineValue("Reason")}</td>
+                <td>{getLineValue("Machine")}</td>
+                <td>{getLineValue("Ansamble")}</td>
+                <td>{getLineValue("Issue")}</td>
               </tr>
             );
           })}
@@ -3144,9 +3144,7 @@ function App() {
           {rowsToDisplay.length === 0 && (
             <tr>
               <td colSpan={8} className="text-center">
-                <h2 className="eroare_productie">
-                  Nu există date de producție pentru afișare.
-                </h2>
+                <h2 className="eroare_productie">No available data.</h2>
               </td>
             </tr>
           )}
@@ -3224,7 +3222,6 @@ function App() {
     setSelectedMonth(null);
     setShowBOSTable(false);
     setSelectedRaport(null);
-    window.history.pushState("", "");
   };
 
   // logica de intoarcere la sectii
@@ -3636,7 +3633,7 @@ function App() {
           />
         </>
       ) : selectedTime === "Quarter" && selectedQuarter && selectedGraph ? (
-        <div className="mt-4">
+        <div>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -3662,13 +3659,6 @@ function App() {
                       )}
                     />
                   </div>
-                  <button
-                    className="btn-inapoi btn-primary"
-                    style={{ marginTop: "1rem" }}
-                    onClick={() => setSelectedQuarter(null)}
-                  >
-                    Back
-                  </button>
                 </>
               ) : selectedGraph === "Volume Produced" && chartDataVolume ? (
                 <>
@@ -3689,13 +3679,6 @@ function App() {
                       )}
                     />
                   </div>
-                  <button
-                    className="btn-inapoi btn-primary"
-                    style={{ marginTop: "1rem" }}
-                    onClick={() => setSelectedQuarter(null)}
-                  >
-                    Back
-                  </button>
                 </>
               ) : selectedGraph === "Waste" && chartDataWaste ? (
                 <>
@@ -3715,13 +3698,6 @@ function App() {
                       )}
                     />
                   </div>
-                  <button
-                    className="btn-inapoi btn-primary"
-                    style={{ marginTop: "1rem" }}
-                    onClick={() => setSelectedQuarter(null)}
-                  >
-                    Back
-                  </button>
                 </>
               ) : selectedGraph === "Speed Loss" && chartDataSpeed ? (
                 <>
@@ -3742,17 +3718,10 @@ function App() {
                       )}
                     />
                   </div>
-                  <button
-                    className="btn-inapoi btn-primary"
-                    style={{ marginTop: "1rem" }}
-                    onClick={() => setSelectedQuarter(null)}
-                  >
-                    Back
-                  </button>
                 </>
               ) : (
                 <p>
-                  Nu există date pentru {selectedGraph} în {selectedQuarter}.
+                  No available data for {selectedGraph} in {selectedQuarter}.
                 </p>
               )}
             </>
@@ -3801,7 +3770,7 @@ function App() {
                   />
                 </div>
               ) : (
-                <p>Nu există date pentru luna selectată.</p>
+                <p>No available data for the selected month.</p>
               )}
 
               <>
@@ -3859,7 +3828,7 @@ function App() {
                   />
                 </div>
               ) : (
-                <p>Nu există date pentru luna selectată.</p>
+                <p>No available data for the selected month.</p>
               )}
 
               <button
@@ -3912,7 +3881,7 @@ function App() {
                   />
                 </div>
               ) : (
-                <p>Nu există date pentru luna selectată.</p>
+                <p>No available data for the selected month.</p>
               )}
               <p>
                 <button
@@ -3975,7 +3944,7 @@ function App() {
                   />
                 </div>
               ) : (
-                <p>Nu există date pentru luna selectată.</p>
+                <p>No available data for the selected month.</p>
               )}
             </>
           )}
@@ -4100,9 +4069,7 @@ function App() {
                   </div>
                 </>
               ) : (
-                <p>
-                  Nu există date pentru {selectedMachine} în luna selectată.
-                </p>
+                <p>No available {selectedMachine} for the selected month.</p>
               )}
             </div>
           )}
@@ -4192,7 +4159,7 @@ function App() {
                   <div
                     ref={printRef}
                     className="dataCard graph"
-                    style={{ height: "400px" }}
+                    style={{ height: "300px" }}
                     onClick={handlePdf}
                   >
                     <Line
