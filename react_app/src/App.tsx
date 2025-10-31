@@ -1919,11 +1919,11 @@ function App() {
           <thead>
             <tr>
               {[
-                "Schimb",
+                "Change",
                 "Team Leader",
-                "Produs",
-                "Volum Produs",
-                "Ore Utilizate",
+                "SKU",
+                "Produced Volume",
+                "Used Hours",
                 ...(showHolidays ? ["Holidays"] : []),
                 ...(showNoDemand ? ["No Demand"] : []),
                 ...(showForceMajeure ? ["Force Majeure"] : []),
@@ -3778,7 +3778,7 @@ function App() {
                   className="btn-inapoi-luna btn-primary"
                   onClick={() => setShowMonthForm(true)}
                 >
-                  Schimbă Luna
+                  Change Month
                 </button>
               </>
               <>
@@ -3835,7 +3835,7 @@ function App() {
                 className="btn-inapoi-luna btn-primary"
                 onClick={() => setShowMonthForm(true)}
               >
-                Schimbă Luna
+                Change Month
               </button>
               <button
                 className="btn-inapoi btn-primary"
@@ -3888,7 +3888,7 @@ function App() {
                   className="btn-inapoi-luna btn-primary"
                   onClick={() => setShowMonthForm(true)}
                 >
-                  Schimbă Luna
+                  Change Month
                 </button>
               </p>
               <button
@@ -4243,7 +4243,7 @@ function App() {
                   className="btn-inapoi btn-primary"
                   onClick={() => setShowLogDateForm(true)}
                 >
-                  Schimbă Data
+                  Change Date
                 </button>
                 <button
                   className="btn-inapoi btn-secondary"
