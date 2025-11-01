@@ -3753,42 +3753,35 @@ function App() {
               {loading ? (
                 <p>Loading...</p>
               ) : chartDataGE ? (
-                <div
-                  ref={printRef}
-                  className="dataCard graph"
-                  style={{ height: "400px" }}
-                  onClick={handlePdf}
-                >
-                  <Line
-                    data={chartDataGE}
-                    options={propGrafica(
-                      "GE %",
-                      selectedMonth,
-                      targets.find((t) => t.operation === "GE")?.target,
-                      false
-                    )}
-                  />
-                </div>
+                <>
+                  <p>
+                    <button
+                      className="btn-inapoi-luna btn-primary"
+                      onClick={() => setShowMonthForm(true)}
+                    >
+                      Pick a different month
+                    </button>
+                  </p>
+                  <div
+                    ref={printRef}
+                    className="dataCard graph"
+                    style={{ height: "400px" }}
+                    onClick={handlePdf}
+                  >
+                    <Line
+                      data={chartDataGE}
+                      options={propGrafica(
+                        "GE %",
+                        selectedMonth,
+                        targets.find((t) => t.operation === "GE")?.target,
+                        false
+                      )}
+                    />
+                  </div>
+                </>
               ) : (
                 <p>No available data for the selected month.</p>
               )}
-
-              <>
-                <button
-                  className="btn-inapoi-luna btn-primary"
-                  onClick={() => setShowMonthForm(true)}
-                >
-                  Change Month
-                </button>
-              </>
-              <>
-                <button
-                  className="btn-inapoi btn-primary"
-                  onClick={() => setSelectedTime(null)}
-                >
-                  Back
-                </button>
-              </>
             </>
           )}
         </div>
@@ -3810,39 +3803,36 @@ function App() {
               {loading ? (
                 <p>Loading...</p>
               ) : chartDataVolume ? (
-                <div
-                  ref={printRef}
-                  className="dataCard graph"
-                  style={{ height: "400px" }}
-                  onClick={handlePdf}
-                >
-                  <Line
-                    data={chartDataVolume}
-                    options={propGrafica(
-                      "Tones",
-                      selectedMonth,
-                      targets.find((t) => t.operation === "Volume Produced")
-                        ?.target,
-                      false
-                    )}
-                  />
-                </div>
+                <>
+                  <p>
+                    <button
+                      className="btn-inapoi-luna btn-primary"
+                      onClick={() => setShowMonthForm(true)}
+                    >
+                      Pick a different month
+                    </button>
+                  </p>
+                  <div
+                    ref={printRef}
+                    className="dataCard graph"
+                    style={{ height: "400px" }}
+                    onClick={handlePdf}
+                  >
+                    <Line
+                      data={chartDataVolume}
+                      options={propGrafica(
+                        "Tones",
+                        selectedMonth,
+                        targets.find((t) => t.operation === "Volume Produced")
+                          ?.target,
+                        false
+                      )}
+                    />
+                  </div>
+                </>
               ) : (
                 <p>No available data for the selected month.</p>
               )}
-
-              <button
-                className="btn-inapoi-luna btn-primary"
-                onClick={() => setShowMonthForm(true)}
-              >
-                Change Month
-              </button>
-              <button
-                className="btn-inapoi btn-primary"
-                onClick={() => setSelectedTime(null)}
-              >
-                Back
-              </button>
             </>
           )}
         </div>
@@ -3861,6 +3851,14 @@ function App() {
             </p>
           ) : (
             <>
+              <p>
+                <button
+                  className="btn-inapoi-luna btn-primary"
+                  onClick={() => setShowMonthForm(true)}
+                >
+                  Pick a different month
+                </button>
+              </p>
               {loading ? (
                 <p>Loading...</p>
               ) : chartDataWaste ? (
@@ -3883,20 +3881,6 @@ function App() {
               ) : (
                 <p>No available data for the selected month.</p>
               )}
-              <p>
-                <button
-                  className="btn-inapoi-luna btn-primary"
-                  onClick={() => setShowMonthForm(true)}
-                >
-                  Change Month
-                </button>
-              </p>
-              <button
-                className="btn-inapoi btn-primary"
-                onClick={() => setSelectedTime(null)}
-              >
-                Back
-              </button>
             </>
           )}
         </div>
@@ -4596,7 +4580,7 @@ function App() {
                             className="btn btn-sm btn-outline-danger"
                             onClick={() => handleRemoveComparisonDate(date)}
                           >
-                            Șterge
+                            Delete
                           </button>
                         )}
                       </div>
