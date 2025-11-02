@@ -1014,7 +1014,7 @@ function App() {
       ]);
 
       if (!todayResponse.ok && !yesterdayResponse.ok) {
-        throw new Error("Eroare la descărcarea fișierului");
+        throw new Error("Error on data file.");
       }
 
       const cards = [];
@@ -1031,11 +1031,11 @@ function App() {
             header: entry.tip_produs || "Production Entry",
             text: `Start Date: ${entry.start_date || ""}\nEnd Date: ${
               entry.end_date || ""
-            }\nProduct Type: ${entry.tip_produs || ""}\nGramaj: ${
+            }\nProduct Type: ${entry.tip_produs || ""}\nWeight: ${
               entry.gramaj || ""
-            }\nPcs/Bax: ${entry.pcs_bax || ""}\nComanda Initiala: ${
+            }\nPcs/Bax: ${entry.pcs_bax || ""}\nInitial Order: ${
               entry.comanda_initiala || ""
-            }\nShifturi: ${entry.shifturi || ""}\nOre Productie: ${
+            }\nShifts: ${entry.shifturi || ""}\nProduction Hours: ${
               entry.ore_productie || ""
             }`,
             isYesterday: false,
@@ -1066,11 +1066,11 @@ function App() {
                 header: lastEntry.tip_produs || "Production Entry",
                 text: `Start Date: ${lastEntry.start_date || ""}\nEnd Date: ${
                   lastEntry.end_date || ""
-                }\nProduct Type: ${lastEntry.tip_produs || ""}\nGramaj: ${
+                }\nProduct Type: ${lastEntry.tip_produs || ""}\nWeight: ${
                   lastEntry.gramaj || ""
-                }\nPcs/Bax: ${lastEntry.pcs_bax || ""}\nComanda Initiala: ${
+                }\nPcs/Bax: ${lastEntry.pcs_bax || ""}\nInitial Order: ${
                   lastEntry.comanda_initiala || ""
-                }\nShifturi: ${lastEntry.shifturi || ""}\nOre Productie: ${
+                }\nShifts: ${lastEntry.shifturi || ""}\nProduction Hours: ${
                   lastEntry.ore_productie || ""
                 }`,
                 isYesterday: true,
@@ -2900,11 +2900,11 @@ function App() {
           start_date: getLineValue("Start Date"),
           end_date: getLineValue("End Date"),
           tip_produs: getLineValue("Product Type"),
-          gramaj: getLineValue("Gramaj"),
+          gramaj: getLineValue("Weight"),
           pcs_bax: getLineValue("Pcs/Bax"),
-          comanda_initiala: getLineValue("Comanda Initiala"),
-          shifturi: getLineValue("Shifturi"),
-          ore_productie: getLineValue("Ore Productie"),
+          comanda_initiala: getLineValue("Initial Order"),
+          shifturi: getLineValue("Shifts"),
+          ore_productie: getLineValue("Production Hours"),
         };
       })
       .filter((entry) => entry.start_date && entry.start_date !== "null");
@@ -3097,14 +3097,14 @@ function App() {
           </td>
 
           <tr>
-            <th>Start Productie</th>
-            <th>Sfârșit Productie</th>
-            <th>Nume Produs</th>
-            <th>Gramaj</th>
-            <th>Bucati Bax</th>
-            <th>Cantitate Comandata</th>
-            <th>Shift</th>
-            <th>Ore Productie</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Product Name</th>
+            <th>Weight</th>
+            <th>Pcs/Bax</th>
+            <th>Order</th>
+            <th>Shifts</th>
+            <th>Production Hours</th>
           </tr>
         </thead>
         <tbody>
@@ -3161,8 +3161,8 @@ function App() {
           <thead>
             <td colSpan={2}>Safety</td>
             <tr>
-              <th>Actiune Sigura</th>
-              <th>Actiune Nesigura</th>
+              <th>Safe Action</th>
+              <th>Unsafe Action</th>
             </tr>
           </thead>
           <tbody>
