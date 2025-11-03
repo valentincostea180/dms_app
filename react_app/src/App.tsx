@@ -932,7 +932,7 @@ function App() {
         body: JSON.stringify({ filters }),
       });
 
-      if (!response.ok) throw new Error("Eroare la descărcarea datelor DMS");
+      if (!response.ok) throw new Error("Error on uploading the DMS's data.");
 
       const data = await response.json();
       setDmsActionData(data.data || []);
@@ -964,7 +964,7 @@ function App() {
 
       if (!response.ok) {
         throw new Error(
-          `Eroare la descărcarea datelor de producție: ${response.status}`
+          `Error on uploading the production's data.: ${response.status}`
         );
       }
 
@@ -1096,7 +1096,7 @@ function App() {
     setLoading(true);
     try {
       const response = await fetch(`http://${path}:5000/bos-data/`);
-      if (!response.ok) throw new Error("Eroare la descărcarea datelor BOS");
+      if (!response.ok) throw new Error("Error on uploading the BOS's data.");
 
       const data = await response.json();
       const bosData = data.data;
@@ -1125,7 +1125,7 @@ function App() {
     setLoading(true);
     try {
       const response = await fetch(`http://${path}:5000/nm-data/`);
-      if (!response.ok) throw new Error("Eroare la descărcarea datelor NM");
+      if (!response.ok) throw new Error("Error on uploading the NM's data.");
 
       const data = await response.json();
       const nmData = data.data;
@@ -1154,8 +1154,7 @@ function App() {
     setLoading(true);
     try {
       const response = await fetch("./data/weekly_summary.json");
-      if (!response.ok)
-        throw new Error("Eroare la descărcarea datelor săptămânale");
+      if (!response.ok) throw new Error("Error on uploading the weekly data.");
 
       const weeklyData = await response.json();
 
@@ -1361,7 +1360,7 @@ function App() {
         body: JSON.stringify({ action: newAction }),
       });
 
-      if (!response.ok) throw new Error("Eroare la adăugarea acțiunii DMS");
+      if (!response.ok) throw new Error("Error on adding the DMS's data.");
 
       const data = await response.json();
 
@@ -1529,12 +1528,10 @@ function App() {
                           row.status === "active" ? "completed" : "active";
 
                         const statusText =
-                          newStatus === "completed"
-                            ? "finalizată"
-                            : "reactivată";
+                          newStatus === "completed" ? "completed" : "reactived";
 
                         const confirmUpdate = window.confirm(
-                          `Sigur dorești să marchezi această acțiune ca ${statusText}?`
+                          `Do you really  want to modify this action as ${statusText}?`
                         );
 
                         if (confirmUpdate) {
@@ -1545,8 +1542,8 @@ function App() {
                         cursor: "pointer",
                         fontWeight: "bold",
                       }}
-                      title={`Click pentru a marca ca ${
-                        row.status === "active" ? "finalizată" : "reactivată"
+                      title={`Click for modifying it as ${
+                        row.status === "active" ? "completed" : "reactivated"
                       }`}
                     >
                       {row.status === "active" ? "Active" : "Completed"}
@@ -2501,7 +2498,9 @@ function App() {
   // functie eliminare rapoarte
   const handleEliminate = async (index: number) => {
     // confirmare
-    const confirmDelete = window.confirm("Sigur vrei să elimini acest raport?");
+    const confirmDelete = window.confirm(
+      "Do you really want to delelete this?"
+    );
     if (!confirmDelete) return;
 
     // eliminare locala din cardsData
@@ -2518,10 +2517,11 @@ function App() {
         }),
       });
 
-      if (!res.ok) throw new Error("Nu s-a putut elimina raportul pe server.");
+      if (!res.ok)
+        throw new Error("The raport couldn't be saved on the server.");
     } catch (err) {
       console.error(err);
-      alert("Eroare la eliminarea raportului de pe server.");
+      alert("Error deleting the raport.");
     }
   };
 
@@ -2540,7 +2540,7 @@ function App() {
 
     try {
       const response = await fetch(`http://${path}:5000/data/${Form(dateNow)}`);
-      if (!response.ok) throw new Error("Eroare la descărcarea fișierului");
+      if (!response.ok) throw new Error("Error uploading the file.");
 
       const data = await response.json();
       const dateData = data.data;
@@ -2666,7 +2666,7 @@ function App() {
 
     try {
       const response = await fetch(`http://${path}:5000/data/month/${month}`);
-      if (!response.ok) throw new Error("Eroare la descărcarea datelor lunare");
+      if (!response.ok) throw new Error("Error uploading the monthly data.");
 
       const data = await response.json();
       const monthlyData: MonthlyDataEntry[] = data.data || [];
@@ -3267,7 +3267,7 @@ function App() {
       const formattedDate = Form(tempDate);
 
       const response = await fetch(`http://${path}:5000/data/${formattedDate}`);
-      if (!response.ok) throw new Error("Eroare la descărcarea fișierului");
+      if (!response.ok) throw new Error("Error at the file level.");
 
       const data = await response.json();
       const dateData = data.data;
@@ -3415,7 +3415,7 @@ function App() {
       );
 
       if (!response.ok)
-        throw new Error("Eroare la descărcarea datelor mașinii");
+        throw new Error("Error on uploading the machine's data.");
 
       const data = await response.json();
 
@@ -3424,7 +3424,7 @@ function App() {
 
         setChartDataMachine(chartData);
       } else {
-        throw new Error(data.message || "Eroare la procesarea datelor");
+        throw new Error(data.message || "Error on data processing.");
       }
     } catch (err) {
       console.error(err);
@@ -4166,9 +4166,9 @@ function App() {
                     className="btn-inapoi btn-primary"
                     onClick={() => setShowMonthForm(true)}
                   >
-                    Afișează Grafic GE
+                    Show GE Graph
                   </button>
-                  <p>Apasă butonul pentru a afișa graficul GE.</p>
+                  <p>Press button for viewing of the graph.</p>
                 </>
               )}
             </>
