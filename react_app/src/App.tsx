@@ -4257,7 +4257,7 @@ function App() {
         </div>
       ) : selectedRaport === "Add New Raport" ? (
         <div className="mt-4">
-          <h3>Formular Raport Nou</h3>
+          <h3>New Raport Path</h3>
           <div className="row g-2">
             <div className="col-md">
               <div className="form-floating">
@@ -4270,7 +4270,7 @@ function App() {
                     setNewRaport({ ...newRaport, oraIn: e.target.value })
                   }
                 />
-                <label htmlFor="oraIn">Ora Începere</label>
+                <label htmlFor="oraIn">Start Time</label>
               </div>
             </div>
 
@@ -4285,7 +4285,7 @@ function App() {
                     setNewRaport({ ...newRaport, oraOut: e.target.value })
                   }
                 />
-                <label htmlFor="oraOut">Ora Sfârșit</label>
+                <label htmlFor="oraOut">End Time</label>
               </div>
             </div>
 
@@ -4304,7 +4304,7 @@ function App() {
                   <option value="2">L2</option>
                   <option value="3">L3</option>
                 </select>
-                <label htmlFor="zonaSelect">Zona</label>
+                <label htmlFor="zonaSelect">Zone</label>
               </div>
             </div>
 
@@ -4322,7 +4322,7 @@ function App() {
                   <option value="Unplanned">Unplanned</option>
                   <option value="Planned">Planned</option>
                 </select>
-                <label htmlFor="tipSelect">Tip</label>
+                <label htmlFor="tipSelect">Type</label>
               </div>
             </div>
 
@@ -4355,7 +4355,7 @@ function App() {
                       Start and Finish Production
                     </option>
                   </select>
-                  <label htmlFor="tipSelectPlanned">Motiv</label>
+                  <label htmlFor="tipSelectPlanned">Reason</label>
                 </div>
               </div>
             )}
@@ -4385,7 +4385,7 @@ function App() {
                       Labor Management Losses
                     </option>
                   </select>
-                  <label htmlFor="tipSelectUnplanned">Motiv</label>
+                  <label htmlFor="tipSelectUnplanned">Reason</label>
                 </div>
               </div>
             )}
@@ -4406,7 +4406,7 @@ function App() {
                       setNewRaport({ ...newRaport, masina: e.target.value })
                     }
                   />
-                  <label htmlFor="masina">Mașina</label>
+                  <label htmlFor="masina">Machine</label>
                 </div>
               </div>
             )}
@@ -4427,7 +4427,7 @@ function App() {
                       setNewRaport({ ...newRaport, ansamblu: e.target.value })
                     }
                   />
-                  <label htmlFor="ansamblu">Ansamblu</label>
+                  <label htmlFor="ansamblu">Ansamble</label>
                 </div>
               </div>
             )}
@@ -4448,7 +4448,7 @@ function App() {
                       setNewRaport({ ...newRaport, problema: e.target.value })
                     }
                   />
-                  <label htmlFor="problema">Problema</label>
+                  <label htmlFor="problema">Issue</label>
                 </div>
               </div>
             )}
