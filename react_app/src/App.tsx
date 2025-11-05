@@ -1388,7 +1388,7 @@ function App() {
         body: JSON.stringify({ id }),
       });
 
-      if (!response.ok) throw new Error("Eroare la ștergerea acțiunii DMS");
+      if (!response.ok) throw new Error("Error deleting the action.");
 
       const data = await response.json();
 
