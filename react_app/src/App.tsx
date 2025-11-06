@@ -2612,9 +2612,9 @@ function App() {
               ].includes(entry.operatie)
             ) {
               let temp = Math.round(Number(value) * 60) * oreReferintaVal;
-              displayValue = `${temp} minute`;
+              displayValue = `${temp} minutes`;
             } else if (["Volume Produced"].includes(entry.operatie)) {
-              displayValue = `${toneReferintaVal.toFixed(2)} tone`;
+              displayValue = `${toneReferintaVal.toFixed(2)} tones`;
             } else {
               displayValue = `${(value * 100).toFixed(2)} %`;
             }
@@ -3555,13 +3555,13 @@ function App() {
         tooltip: {
           callbacks: {
             label: function (context: any) {
-              return `${context.dataset.label}: ${context.parsed.y} minute`;
+              return `${context.dataset.label}: ${context.parsed.y} minutes`;
             },
           },
         },
         title: {
           display: true,
-          text: `Timp pierdut - ${machineName}`,
+          text: `Lost Time - ${machineName}`,
           color: "#ba8bd3",
           font: {
             size: 16,
