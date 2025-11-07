@@ -3336,9 +3336,9 @@ function App() {
             ].includes(entry.operatie)
           ) {
             let temp = Math.round(Number(value) * 60) * oreReferintaVal;
-            displayValue = `${temp} minute`;
+            displayValue = `${temp} minutes`;
           } else if (["Volume Produced"].includes(entry.operatie)) {
-            displayValue = `${toneReferintaVal.toFixed(2)} tone`;
+            displayValue = `${toneReferintaVal.toFixed(2)} tones`;
           } else {
             displayValue = `${(value * 100).toFixed(2)} %`;
           }
@@ -3514,7 +3514,7 @@ function App() {
           beginAtZero: true,
           title: {
             display: true,
-            text: "Minute",
+            text: "Minutes",
             color: "#ba8bd3",
           },
           ticks: {
