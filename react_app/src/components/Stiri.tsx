@@ -193,7 +193,7 @@ const Stiri: React.FC<Props> = ({ jsonUrl, path }) => {
                   }
                 }}
               >
-                Adaugă
+                Add
               </button>
             </div>
 
