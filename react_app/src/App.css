@@ -5,6 +5,7 @@
   --primary-purple: #6b2c8c;
   --dark-purple: #502171;
   --deep-purple: #3b165a;
+  --deeper-purple: #53216e;
   --darker-purple: #2a0e3f;
   --light-purple: #ba8bd3;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -25,7 +26,7 @@ body {
   background: linear-gradient(
     -45deg,
     var(--dark-purple),
-    #53216e,
+    var(--deeper-purple),
     var(--deep-purple),
     var(--darker-purple)
   );
@@ -900,7 +901,7 @@ h1 {
   background-color: linear-gradient(
     -45deg,
     var(--dark-purple),
-    #53216e,
+    var(--deeper-purple),
     var(--deep-purple),
     var(--darker-purple)
   );
@@ -1208,7 +1209,7 @@ h4 {
   background-color: linear-gradient(
     -45deg,
     var(--dark-purple),
-    #53216e,
+    var(--deeper-purple),
     var(--deep-purple),
     var(--darker-purple)
   );
@@ -1220,7 +1221,7 @@ h4 {
   background-color: linear-gradient(
     -45deg,
     var(--dark-purple),
-    #53216e,
+    var(--deeper-purple),
     var(--deep-purple),
     var(--darker-purple)
   );
@@ -1321,7 +1322,7 @@ h4 {
 }
 
 .date-header {
-  color: #ba8bd3;
+  color: var(--light-purple);
   font-weight: 600;
   margin: 0;
 }
@@ -1356,7 +1357,7 @@ h4 {
 .dms-action-table thead th {
   position: sticky;
   top: 0;
-  background-color: #3b165a;
+  background-color: var(--deep-purple);
   z-index: 10;
 }
 
