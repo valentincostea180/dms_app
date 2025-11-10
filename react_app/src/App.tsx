@@ -3376,31 +3376,36 @@ function App() {
 
   // functie formatare selectare luna
   const MonthSelectionForm = ({ graphType }: { graphType: string }) => (
-    <div className="row-date g-2t">
-      <form onSubmit={(e) => handleMonthSubmit(e, graphType)}>
-        <div className="mb-3">
-          <input
-            type="month"
-            className="form-control"
-            id="monthInput"
-            value={selectedMonthInput}
-            onChange={(e) => setSelectedMonthInput(e.target.value)}
-            required
-          />
-        </div>
-        <div className="d-flex gap-2">
-          <button type="submit" className="btn-inapoi btn-primary">
-            Confirm
-          </button>
-          <button
-            type="button"
-            className="btn-inapoi btn-secondary"
-            onClick={() => setSelectedGraph(null)}
-          >
-            Back
-          </button>
-        </div>
-      </form>
+    <div className="row-date">
+      <h2 className="btn-group-vertical" style={{ margin: "2rem" }}>
+        {"Selected " + selectedGraph}
+      </h2>
+      <p>
+        <form onSubmit={(e) => handleMonthSubmit(e, graphType)}>
+          <div className="mb-3">
+            <input
+              type="month"
+              className="form-control"
+              id="monthInput"
+              value={selectedMonthInput}
+              onChange={(e) => setSelectedMonthInput(e.target.value)}
+              required
+            />
+          </div>
+          <div className="d-flex gap-2">
+            <button type="submit" className="btn-inapoi btn-primary">
+              Confirm
+            </button>
+            <button
+              type="button"
+              className="btn-inapoi btn-secondary"
+              onClick={() => setSelectedGraph(null)}
+            >
+              Back
+            </button>
+          </div>
+        </form>
+      </p>
     </div>
   );
 
@@ -3978,7 +3983,7 @@ function App() {
                       const month = e.target.value;
                       setSelectedMachineMonth(month);
                       if (selectedMachine && month) {
-                        fetchMachineData(selectedMachine, "202509");
+                        fetchMachineData(selectedMachine, selectedMachineMonth);
                       }
                     }}
                   />
@@ -4244,7 +4249,7 @@ function App() {
           ) : (
             <>
               <h4 style={{ margin: "2rem", color: "#ccca" }}>
-                Pick a reference date for production plan .
+                Pick a reference date for production plan.
               </h4>
               <button
                 className="btn-inapoi btn-primary"
