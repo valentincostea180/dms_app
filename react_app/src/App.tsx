@@ -3378,7 +3378,8 @@ function App() {
   const MonthSelectionForm = ({ graphType }: { graphType: string }) => (
     <div className="row-date">
       <h2 className="btn-group-vertical" style={{ margin: "2rem" }}>
-        {"Selected " + selectedGraph}
+        {("Selected " + selectedGraph && selectedGraph) ||
+          "Pick reference month for GE graph."}
       </h2>
       <p>
         <form onSubmit={(e) => handleMonthSubmit(e, graphType)}>
