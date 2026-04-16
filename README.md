@@ -25,24 +25,6 @@ A comprehensive industrial management web application designed to streamline pro
 - **Data Transformation**: Convert Excel formats to structured JSON/DB formats
 - **Report Generation**: Automated reporting from raw production data
 
-## 🏗️ Architecture
-
-```
-DMS-App/
-├── frontend/                 # React TypeScript Application
-│   ├── src/
-│   │   ├── components/       # Reusable UI components
-│   │   ├── AuthProvider.tsx     # Authentication context
-│   │   ├── authConfig.ts     # Authentication context
-│   │   └── App.tsx          # Main application
-│   └── public/
-├── backend/                  # Node.js Express Server
-│   ├── routes/              # API endpoints
-│   ├── scripts/             # Python data processing scripts
-│   └── public/data/         # Database and JSON files
-└── docs/                    # Documentation
-```
-
 ## 📊 Core Modules
 
 ### Production Monitoring
@@ -90,36 +72,8 @@ DMS-App/
 - CORS-enabled API architecture
 
 **Data Processing:**
-- Python 3.x
 - Pandas for Excel processing
 - Custom data transformation scripts
-
-## 🔧 Installation & Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/dms-2-digitalization-tool.git
-   cd dms-2-digitalization-tool
-   ```
-
-2. **Backend Setup**
-   ```bash
-   cd backend
-   npm install
-   npm start
-   ```
-
-3. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
-
-4. **Python Dependencies**
-   ```bash
-   pip install pandas openpyxl
-   ```
 
 ## 📈 Key Benefits
 
@@ -129,12 +83,6 @@ DMS-App/
 - **Cross-Platform**: Accessible from any device with a web browser
 - **Scalable Architecture**: Modular design for easy feature expansion
 
-## 👥 Target Users
-
-- **Section Managers**: Overall production oversight and reporting
-- **Process Engineers**: Technical analysis and process optimization
-- **Line Leads**: Daily operations management and real-time monitoring
-- **Safety Officers**: Compliance tracking and incident reporting
 
 ## 🔒 Security Features
 
@@ -143,7 +91,3 @@ DMS-App/
 - Input sanitization
 - Prepared SQL statements
 - CORS configuration
-
----
-
-*Built for modern manufacturing excellence* 🏭⚡
